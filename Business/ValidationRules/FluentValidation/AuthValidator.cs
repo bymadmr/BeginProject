@@ -1,5 +1,6 @@
 ﻿using Business.Constants;
 using Core.Entities.Concrete;
+using Entities.Dtos;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,11 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class EmployeeValidator : AbstractValidator<EUser>
+    public class AuthValidator : AbstractValidator<UserForLoginDto>
     {
-        public EmployeeValidator()
+        public AuthValidator()
         {
             RuleFor(e => e.Email).MinimumLength(3).WithMessage(Messages.NameMinLength);
-            RuleFor(e => e.FirstName).MinimumLength(2).WithMessage(Messages.SurnameMinLength);
-            RuleFor(e => e.LastName).MinimumLength(2).WithMessage(Messages.UsernameMinLength);
         }
     }
 }
